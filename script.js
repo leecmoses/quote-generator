@@ -35,7 +35,7 @@ const newQuote = (arr) => {
 
   // Set Quote and Auther, Hide Loader
   quoteText.textContent = quote;
-  authorText.textContent = author;
+  authorText.textContent = `– ${author}`;
   removeLoadingSpinner();
 };
 
@@ -47,7 +47,6 @@ const getQuotes = async () => {
   try {
     const resp = await fetch(apiUrl);
     apiQuotes = await resp.json();
-    console.log(apiQuotes);
     newQuote(apiQuotes);
   } catch (error) {
     // Handle error here
