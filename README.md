@@ -1,6 +1,6 @@
 # Quote Generator
 
-Generate a new quote with a click of a button and option to share the quote to Twitter.
+Generate a new quote with a click of a button and option to share the quote on Twitter.
 
 # Motivation for this project
 
