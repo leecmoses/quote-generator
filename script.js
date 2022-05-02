@@ -3,13 +3,14 @@
 const quoteContainer = document.querySelector("#quote-container");
 const quoteText = document.querySelector("#quote");
 const authorText = document.querySelector(".quote-author");
+const twitterBtn = document.querySelector("#twitter");
 const newQuoteBtn = document.querySelector("#new-quote");
 
 let apiQuotes = [];
 
 // Show New Quote
 function newQuote(arr) {
-  // Pick a randome quote from array
+  // Pick a random quote from array
   let { text: quote, author } = arr[Math.floor(Math.random() * arr.length)];
 
   // Check if Author field is blank and replace it with 'Unknown'
@@ -37,10 +38,17 @@ async function getQuotes() {
   }
 }
 
+// Tweet Quote
+function tweetQuote() {
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+
+  window.open(twitterUrl, "_blank");
+}
+
 // On load
 getQuotes();
 
-newQuoteBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  newQuote(apiQuotes);
-});
+// Event Listeners
+twitterBtn.addEventListener("click", (e) => tweetQuote());
+
+newQuoteBtn.addEventListener("click", (e) => newQuote(apiQuotes));
